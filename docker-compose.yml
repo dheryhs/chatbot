@@ -3,6 +3,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+       environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@db:5432/postgres?schema=public
+      - NEXTAUTH_URL=${NEXTAUTH_URL}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+      - WAHA_API_KEY=${WAHA_API_KEY}
+      - WAHA_BASE_URL=${WAHA_BASE_URL}
     depends_on:
       db:
         condition: service_healthy
