@@ -51,7 +51,7 @@ export async function generateAIResponse(
       // Execute AI Inference
       const result = await model.generateContent({
         contents: [{ role: "user", parts: [{ text: userMessage }] }],
-        systemInstruction: { parts: [{ text: systemPrompt }] },
+        systemInstruction: { role: "system", parts: [{ text: systemPrompt }] },
         generationConfig: {
           temperature: 0.7, // Kreativitas tapi masih patuh pada data
           maxOutputTokens: 500, // Hindari response terlalu panjang
