@@ -1,0 +1,279 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.backBtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.backBtn:hover {
+  background: var(--secondary);
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Tab Navigation */
+.tabNav {
+  display: flex;
+  gap: 4px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+}
+
+.tabBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.tabBtn:hover {
+  background: var(--secondary);
+  color: var(--foreground);
+}
+
+.activeTab {
+  background: var(--primary) !important;
+  color: #000 !important;
+  font-weight: 600;
+}
+
+/* Tab Content */
+.tabContent {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  min-height: 400px;
+}
+
+.tabContent h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.hint {
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* Prompt / Knowledge Text Area */
+.promptArea {
+  width: 100%;
+  min-height: 220px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.promptArea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+}
+
+/* Settings Rows */
+.settingRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.settingRow:last-child {
+  border-bottom: none;
+}
+
+.settingRow span {
+  color: var(--foreground);
+}
+
+/* Sub-tabs (Knowledge) */
+.subTabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.subTabBtn {
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.subTabBtn:hover {
+  background: var(--secondary);
+}
+
+.activeSubTab {
+  background: var(--primary) !important;
+  color: #000 !important;
+  border-color: var(--primary) !important;
+  font-weight: 600;
+}
+
+/* Session List (WhatsApp Tab) */
+.sessionList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sessionRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.sessionRow:last-child {
+  border-bottom: none;
+}
+
+/* Save Bar */
+.saveBar {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding: 16px 0;
+}
+
+/* Q&A Builder */
+.qaRow {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.qaRow textarea {
+  flex: 1;
+  min-height: 60px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.85rem;
+  resize: vertical;
+}
+
+.qaRow textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.qaRemoveBtn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: #ff4444;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-top: 12px;
+}
+
+.qaRemoveBtn:hover {
+  background: rgba(255, 68, 68, 0.1);
+}
+
+/* Upload Section */
+.uploadSection {
+  margin-top: 20px;
+  padding: 16px;
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.uploadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: var(--secondary);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.15s;
+}
+
+.uploadBtn:hover {
+  background: var(--border);
+}
+
+/* Follow-Up Input Group */
+.followUpFields {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tabNav {
+    gap: 2px;
+  }
+  .tabBtn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+  .tabContent {
+    padding: 16px;
+  }
+}

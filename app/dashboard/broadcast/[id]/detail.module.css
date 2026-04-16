@@ -1,0 +1,277 @@
+.detailPage {
+  max-width: 800px;
+}
+
+.backRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--foreground);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.deleteBtn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 68, 68, 0.2);
+  background: transparent;
+  color: #ff4444;
+  cursor: pointer;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.tab {
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--muted-foreground);
+  position: relative;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.tab.active {
+  color: var(--foreground);
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--foreground);
+}
+
+/* Summary Section */
+.summaryTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.summaryTable {
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.9rem;
+}
+
+.summaryLabel {
+  color: var(--muted-foreground);
+}
+
+.summaryValue {
+  font-weight: 600;
+  text-align: right;
+}
+
+.statusInline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Delivery Summary */
+.deliverySectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.deliveryTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Progress Bar */
+.progressBarLarge {
+  height: 12px;
+  background: var(--secondary);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.progressSent {
+  height: 100%;
+  background: #25D366;
+  transition: width 0.5s;
+}
+
+.progressFailed {
+  height: 100%;
+  background: #ff4444;
+  transition: width 0.5s;
+}
+
+.progressPending {
+  height: 100%;
+  background: #3b82f6;
+  transition: width 0.5s;
+}
+
+/* Delivery Stats */
+.deliveryStats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.deliveryStat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.deliveryStatLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dotGreen { color: #25D366; }
+.dotRed { color: #ff4444; }
+.dotBlue { color: #3b82f6; }
+
+.deliveryStatRight {
+  font-weight: 700;
+}
+
+/* Actions */
+.actionRow {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.pauseBtn, .resumeBtn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--secondary);
+  color: var(--foreground);
+}
+
+.pauseBtn:hover, .resumeBtn:hover {
+  background: var(--accent);
+}
+
+.resumeBtn {
+  background: var(--primary);
+  color: #000;
+  border: none;
+}
+
+.resumeBtn:hover {
+  opacity: 0.9;
+}
+
+/* Message preview */
+.messagePreview {
+  margin-top: 32px;
+}
+
+.messagePreviewTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.messagePreviewBox {
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Recipients Tab */
+.recipientsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.recipientsTable th {
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  border-bottom: 1px solid var(--border);
+}
+
+.recipientsTable td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.rStatusSent {
+  color: #25D366;
+  font-weight: 600;
+}
+.rStatusFailed {
+  color: #ff4444;
+  font-weight: 600;
+}
+.rStatusPending {
+  color: var(--muted-foreground);
+  font-weight: 600;
+}
+
+.loadingCenter {
+  text-align: center;
+  padding: 60px;
+  color: var(--muted-foreground);
+}

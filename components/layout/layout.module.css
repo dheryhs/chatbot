@@ -1,0 +1,215 @@
+/* ===== Sidebar Header ===== */
+.sidebarHeader {
+  padding: 20px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--foreground);
+  flex-shrink: 0;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.logoTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.2;
+}
+
+.logoSub {
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted-foreground);
+}
+
+/* ===== Sidebar Content / Navigation ===== */
+.sidebarContent {
+  flex: 1;
+  padding: 8px 12px;
+  overflow-y: auto;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  color: var(--muted-foreground);
+  transition: all 0.15s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.navItem:hover {
+  background: var(--accent);
+  color: var(--foreground);
+}
+
+.navItem.active {
+  background: var(--secondary);
+  color: var(--foreground);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 8px 4px;
+}
+
+/* ===== Sidebar Footer ===== */
+.sidebarFooter {
+  padding: 12px 14px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.creditsBox {
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.creditsLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted-foreground);
+  margin-bottom: 4px;
+}
+
+.creditsValue {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--foreground);
+  font-variant-numeric: tabular-nums;
+}
+
+.upgradeBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.upgradeBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.logoutBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  color: var(--muted-foreground);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  transition: all 0.15s;
+}
+
+.logoutBtn:hover {
+  background: rgba(255, 68, 68, 0.08);
+  color: #ff4444;
+}
+
+/* Navbar styles */
+.navLeft {
+  flex: 1;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  background: var(--input);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0 16px;
+  width: 300px;
+  height: 40px;
+}
+
+.searchIcon {
+  color: var(--muted-foreground);
+  margin-right: 10px;
+}
+
+.searchBar input {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navIconBtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: var(--muted-foreground);
+  position: relative;
+}
+
+.navIconBtn:hover {
+  background: var(--secondary);
+  color: var(--foreground);
+}
+
+.notificationBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  background: var(--destructive);
+  border-radius: 50%;
+  border: 2px solid var(--background);
+}

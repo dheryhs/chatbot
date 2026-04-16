@@ -1,0 +1,224 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--muted-foreground);
+  margin: 4px 0 0 0;
+  font-size: 0.9rem;
+}
+
+/* Table Styles */
+.tableContainer {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table th {
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.productName {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.productSku {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.price {
+  font-family: monospace;
+  font-weight: 600;
+}
+
+.stockBadge {
+  display: inline-flex;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.typeBadge {
+  display: inline-flex;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: var(--input);
+  border: 1px solid var(--border);
+}
+
+.digitalBadge {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.actionBtns {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.actionBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--muted-foreground);
+  transition: color 0.2s;
+}
+
+.actionBtn:hover {
+  color: var(--foreground);
+}
+
+.deleteBtn:hover {
+  color: #ff4444;
+}
+
+/* Form Styles */
+.toggleGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: var(--input);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.toggleLabel {
+  display: flex;
+  flex-direction: column;
+}
+
+.toggleLabel h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.toggleLabel p {
+  margin: 2px 0 0 0;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+/* Switch styling */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--secondary);
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+.switch input:checked + .slider {
+  background-color: var(--primary);
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.stockGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.stockInput {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stockInput label {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.modalSubtitle {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  margin-bottom: 20px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--muted-foreground);
+}
