@@ -19,7 +19,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
 
     if (file.name.endsWith(".pdf")) {
       // Dynamic import pdf-parse to avoid issues if not installed
-      const pdfParse = (await import("pdf-parse")).default;
+      const pdfParse = (await import("pdf-parse") as any).default;
       const pdfData = await pdfParse(buffer);
       extractedText = pdfData.text;
     } else if (file.name.endsWith(".txt")) {
