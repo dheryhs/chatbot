@@ -16,12 +16,13 @@ const nextConfig: NextConfig = {
     ]
   },
   serverExternalPackages: ["pdf-parse"],
-  allowedDevOrigins: ["timothy-lubricate-junkman.ngrok-free.dev", "localhost:3000"],
+  allowedDevOrigins: ["timothy-lubricate-junkman.ngrok-free.dev", "localhost:3000", "https://darialam-chatbot.0yowcn.easypanel.host/"],
   experimental: {
     serverActions: {
       allowedOrigins: [
         "localhost:3000",
-        "timothy-lubricate-junkman.ngrok-free.dev"
+        "timothy-lubricate-junkman.ngrok-free.dev",
+        "https://darialam-chatbot.0yowcn.easypanel.host/"
       ]
     }
   }
