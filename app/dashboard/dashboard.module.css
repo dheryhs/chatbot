@@ -1,0 +1,109 @@
+.header {
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  background: var(--muted);
+  padding: 4px;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.tab {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  transition: all 0.2s;
+}
+
+.tab:hover {
+  color: var(--foreground);
+}
+
+.tab.active {
+  background: var(--secondary);
+  color: var(--foreground);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.statHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.statTitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
+.statIcon {
+  color: var(--muted-foreground);
+}
+
+.statValue {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.statSub {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  margin-bottom: 12px;
+}
+
+.statTrend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.statTrend.up {
+  color: #25D366;
+}
+
+.statTrend.down {
+  color: #ff4444;
+}
+
+.chartsGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.chartContainer {
+  height: 300px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 1024px) {
+  .chartsGrid {
+    grid-template-columns: 1fr;
+  }
+}

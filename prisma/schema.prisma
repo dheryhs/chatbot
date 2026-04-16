@@ -1,0 +1,225 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum MessageDirection {
+  INBOUND
+  OUTBOUND
+}
+
+enum MessageType {
+  TEXT
+  IMAGE
+  DOCUMENT
+  VIDEO
+  AUDIO
+  STICKER
+  LOCATION
+  CONTACT
+}
+
+enum SessionStatus {
+  STOPPED
+  STARTING
+  SCAN_QR_CODE
+  WORKING
+  FAILED
+  PENDING
+}
+
+enum BroadcastStatus {
+  PENDING
+  RUNNING
+  PAUSED
+  COMPLETED
+  FAILED
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  passwordHash  String
+  role          Role      @default(USER)
+  credits       Int       @default(1200)
+  aiApiKey      String?
+  aiProvider    String?   @default("openai")  // openai, gemini, anthropic
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  sessions      Session[]
+  agents        Agent[]
+  contacts      Contact[]
+  broadcasts    Broadcast[]
+  warehouses    Warehouse[]
+  products      Product[]
+}
+
+model Session {
+  id              String        @id @default(cuid())
+  userId          String
+  user            User          @relation(fields: [userId], references: [id])
+  sessionName     String
+  wahaSessionId   String        @unique
+  apiKey          String
+  status          SessionStatus @default(PENDING)
+  phoneNumber     String?
+  webhookUrl      String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  agents          Agent[]
+  messages        Message[]
+  broadcasts      Broadcast[]
+}
+
+model Agent {
+  id              String    @id @default(cuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id])
+  name            String
+  description     String?
+
+  // === Tab Behaviour ===
+  systemPrompt    String?   @db.Text
+  welcomeMessage  String?
+
+  // === Tab Knowledge ===
+  knowledgeText   String?   @db.Text
+  knowledgeQA     Json      @default("[]")
+
+  // === Tab Follow-Up ===
+  followUpEnabled Boolean   @default(false)
+  followUpDelay   Int       @default(30)
+  followUpMessage String?   @db.Text
+
+  // === Tab WhatsApp (Many-to-Many via JSON) ===
+  sessionBindings Json      @default("[]")
+
+  // === Tab Settings ===
+  isActive              Boolean @default(true)
+  humanlikeBehaviour    Boolean @default(true)
+  replyDelay            Int     @default(2) // Simulation delay in seconds
+  stopOnManualReply     Boolean @default(true)
+  autoSwitchLegacy      Boolean @default(false)
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  // Backward compat relation
+  sessionId       String?
+  session         Session?  @relation(fields: [sessionId], references: [id])
+}
+
+model Contact {
+  id            String    @id @default(cuid())
+  userId        String
+  user          User      @relation(fields: [userId], references: [id])
+  name          String?
+  phoneNumber   String    @unique
+  jid           String?
+  email         String?
+  source        String?   @default("Manual")
+  note          String?
+  productLabel  String?
+  lastMessageAt DateTime?
+  tags          String[]
+  createdAt     DateTime  @default(now())
+  messages      Message[]
+  broadcastRecipients BroadcastRecipient[]
+}
+
+model Message {
+  id          String            @id @default(cuid())
+  sessionId   String
+  session     Session           @relation(fields: [sessionId], references: [id])
+  contactId   String
+  contact     Contact           @relation(fields: [contactId], references: [id])
+  direction   MessageDirection
+  type        MessageType       @default(TEXT)
+  content     String            // Can be text body or media URL/base64
+  status      String?
+  sentAt      DateTime?
+  createdAt   DateTime          @default(now())
+}
+
+model Broadcast {
+  id            String            @id @default(cuid())
+  userId        String
+  user          User              @relation(fields: [userId], references: [id])
+  sessionId     String
+  session       Session           @relation(fields: [sessionId], references: [id])
+  name          String
+  messageBody   String            @default("")
+  contents      Json              @default("[]")
+  status        BroadcastStatus   @default(PENDING)
+  delayMin      Int               @default(5)
+  delayMax      Int               @default(10)
+  totalCount    Int               @default(0)
+  sentCount     Int               @default(0)
+  failedCount   Int               @default(0)
+  startedAt     DateTime?
+  completedAt   DateTime?
+  scheduledAt   DateTime?
+  createdAt     DateTime          @default(now())
+  recipients    BroadcastRecipient[]
+}
+
+model BroadcastRecipient {
+  id            String    @id @default(cuid())
+  broadcastId   String
+  broadcast     Broadcast @relation(fields: [broadcastId], references: [id])
+  contactId     String
+  contact       Contact   @relation(fields: [contactId], references: [id])
+  phoneNumber   String
+  status        String    @default("PENDING")
+  sentAt        DateTime?
+}
+
+model Warehouse {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  name       String
+  location   String?
+  postalCode String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  stocks     ProductStock[]
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  name        String
+  sku         String?  @unique
+  price       Int      @default(0)
+  isDigital   Boolean  @default(false)
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  stocks      ProductStock[]
+}
+
+model ProductStock {
+  id          String    @id @default(cuid())
+  productId   String
+  product     Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  warehouseId String
+  warehouse   Warehouse @relation(fields: [warehouseId], references: [id], onDelete: Cascade)
+  stock       Int       @default(0)
+
+  @@unique([productId, warehouseId])
+}
