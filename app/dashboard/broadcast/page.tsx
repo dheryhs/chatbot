@@ -103,7 +103,7 @@ export default function BroadcastPage() {
 
   const parseCSV = (csvText: string) => {
     const lines = csvText.split('\n');
-    const result = [];
+    const result: { name: string; phoneNumber: string }[] = [];
     if (lines.length === 0) return result;
     
     // Asumsi koma delimiter.
