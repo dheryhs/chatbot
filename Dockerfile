@@ -41,11 +41,9 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
 
-# Add docker-entrypoint.sh and entire @prisma namespace
+# Add docker-entrypoint.sh and install prisma for migrations
 COPY --chown=nextjs:nodejs docker-entrypoint.sh ./
-COPY --from=deps --chown=nextjs:nodejs /app/node_modules/prisma ./node_modules/prisma
-COPY --from=deps --chown=nextjs:nodejs /app/node_modules/@prisma ./node_modules/@prisma
-RUN chmod +x docker-entrypoint.sh
+RUN npm install --no-save prisma && chmod +x docker-entrypoint.sh
 
 USER nextjs
 
