@@ -4,8 +4,8 @@
 set -e
 
 echo "Running database migrations..."
-# Use node to run the prisma CLI if npx is not available in the runner
-node_modules/.bin/prisma migrate deploy
+# Invoke prisma CLI directly from node_modules/prisma
+node ./node_modules/prisma/build/index.js migrate deploy
 
 echo "Starting application..."
 exec "$@"
