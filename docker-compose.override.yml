@@ -1,0 +1,8 @@
+{
+  "services": {},
+  "networks": {
+    "easypanel": {
+      "external": true
+    }
+  }
+}
