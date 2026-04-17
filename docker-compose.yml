@@ -16,7 +16,6 @@ services:
 
   db:
     image: postgres:16-alpine
-    container_name: whatsapp_chatbot_db
     environment:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:

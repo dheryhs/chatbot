@@ -1,11 +1,12 @@
 #!/bin/sh
-
-# Exit immediately if a command exits with a non-zero status.
 set -e
 
+echo "========================================="
+echo "  WhatsApp Chatbot - Starting Up"
+echo "========================================="
+
 echo "Running database migrations..."
-# Run prisma migrations
 npx prisma migrate deploy
 
-echo "Starting application..."
+echo "Starting application on port $PORT..."
 exec "$@"

@@ -1,8 +1,15 @@
-{
-  "services": {},
-  "networks": {
-    "easypanel": {
-      "external": true
-    }
-  }
-}
+services:
+  app:
+    networks:
+      - easypanel
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.chatbot.rule=Host(`darialam-chatbot.0yowcn.easypanel.host`)"
+      - "traefik.http.routers.chatbot.entrypoints=websecure"
+      - "traefik.http.routers.chatbot.tls=true"
+      - "traefik.http.routers.chatbot.tls.certresolver=letsencrypt"
+      - "traefik.http.services.chatbot.loadbalancer.server.port=3000"
+
+networks:
+  easypanel:
+    external: true
